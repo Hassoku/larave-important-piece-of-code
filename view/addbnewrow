@@ -1,0 +1,48 @@
+@extends('admin.layouts.app')
+@section('content')
+<div>
+    <h3>Add Course Content</h3>
+</div>
+<div id="message">
+
+</div>
+<form class="row g-3" if="addCourseContent"  enctype="multipart/form-data" >
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Add Files ('text or video')</label>
+
+        <input type="file" name="file" class="form-control"   id="inputEmail4">
+
+
+    </div>
+    <div class="col-md-6">
+        <button class="btn btn-primary " id="addMore" type="button"
+        >Add More</button>
+    </div>
+
+    <div class="col-md-6" id="files"></div>
+    <div>
+        <button class="btn btn-primary">Add Files</button>
+    </div>
+</form>
+
+@endsection
+@section('scripts')
+   <script>
+       $(document).ready(function(){
+
+           $("#addMore").on('click',function(){
+
+               var row = "";
+               row +='<div><input type="file" name="file" class="form-control "   id="inputEmail4"><button class="btn btn-primary remove" type="button">Remove</button></div>';
+
+                $("#files").append(row)
+
+           })
+
+           $("div").on("click", "button.remove", function(){
+
+            $(this).closest('div').remove();
+});
+       })
+   </script>
+@endsection
